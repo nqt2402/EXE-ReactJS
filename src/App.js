@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import BT3Header from './BaiTap-LMS/b1-BTThucHanhLayout/BT3Header';
+import BT3Content from './BaiTap-LMS/b1-BTThucHanhLayout/BT3Content';
+import BT3Footer from './BaiTap-LMS/b1-BTThucHanhLayout/BT3Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BT3Header />
+      <BT3Content />
+      <BT3Footer />
     </div>
   );
 }
