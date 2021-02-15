@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# prev EXE
+/src/BaiTap-LMS/b1-BTThucHanhLayout
+
 # testing
 /coverage
 
