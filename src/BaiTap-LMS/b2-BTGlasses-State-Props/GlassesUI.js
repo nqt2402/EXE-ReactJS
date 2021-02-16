@@ -29,17 +29,15 @@ export default class GlassesUI extends Component {
     glassesDetailCSS = { color: 'white' }
 
     //  state
-    state = {
-        name: 'GUCCI G8850U',
-        url: './glassesImage/v1.png',
-        desc: 'Light pink square lenses define these sunglasses, ending with amother of pearl effect tip.',
-    }
+    state = { id: 1, price: 30, name: 'GUCCI G8850U', url: './glassesImage/v1.png', desc: 'Light pink square lenses define these sunglasses, ending with amother of pearl effect tip.' }
 
     /* FUNCTION */
 
     //  set-state
     changeGlasses = (index) => {
         this.setState({
+            id: this.dataGlasses[index].id,
+            price: this.dataGlasses[index].price,
             name: this.dataGlasses[index].name,
             url: `./glassesImage/v${index + 1}.png`,
             desc: this.dataGlasses[index].desc,
