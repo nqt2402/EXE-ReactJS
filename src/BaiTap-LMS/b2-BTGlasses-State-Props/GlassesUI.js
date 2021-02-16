@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import background from './glassesImage/background.jpg';
+import GlassesItem from './GlassesItem';
 
 export default class GlassesUI extends Component {
     /* Data */
@@ -19,8 +19,8 @@ export default class GlassesUI extends Component {
     // backgroundImage: 'url:()' ,
     bodyCSS = { backgroundImage: `url('./glassesImage/background.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center-center' }
     titleCSS = { fontWeight: 600, fontSize: 35, textAlign: 'center', color: 'white', backgroundColor: 'rgba(0,0,0,0.5)', }
-    glassesArrayCSS = { width: 160, height: 50, cursor: 'pointer', }
     modelCSS = { width: 320, height: 390, };
+    glassesArrayCSS = { width: 160, height: 50, cursor: 'pointer', }
     glassesToModelCSS = { position: 'absolute', width: 160, height: 50, top: '26%', left: '25%', };
 
     divModelCSS = { position: 'relative' }
@@ -47,8 +47,11 @@ export default class GlassesUI extends Component {
     //  renderGlassesArray
     renderGlassesArray = () => {
         const arrayGlasses = this.dataGlasses.map((glasses, index) => {
-            return <div className="col-2 py-3" key={index}>
-                <img id="glasses" style={this.glassesArrayCSS} onClick={(event) => { this.changeGlasses(index) }} src={glasses.url} alt={glasses.desc} />
+            return <div className="col-2 mt-3" key={index}>
+                {/* Binding cách thông thường */}
+                {/* <img style={this.glassesArrayCSS} onClick={(event) => { this.changeGlasses(index) }} src={glasses.url} alt={glasses.desc} /> */}
+                {/* Binding dùng props */}
+                <GlassesItem actFunc={this.changeGlasses} inx={index} item={glasses}/>
             </div>
 
         });
@@ -67,8 +70,8 @@ export default class GlassesUI extends Component {
                     <div className="d-flex justify-content-around">
                         {/* model after */}
                         <div style={this.divModelCSS}>
-                            <img style={this.modelCSS} src={'./glassesImage/model.jpg'} id="modelAfter" alt={'Model'} />
-                            <img style={this.glassesToModelCSS} src={this.state.url} id="glassesDetail" />
+                            <img style={this.modelCSS} src={'./glassesImage/model.jpg'} alt={'Model'} />
+                            <img style={this.glassesToModelCSS} src={this.state.url} alt={this.state.desc} />
                             <div style={this.divContentCSS}>
                                 <h3 style={this.glassesTitleCSS}>{this.state.name}</h3>
                                 <p style={this.glassesDetailCSS}>{this.state.desc}</p>
@@ -76,7 +79,7 @@ export default class GlassesUI extends Component {
                         </div>
                         {/* model before */}
                         <div>
-                            <img style={this.modelCSS} src={'./glassesImage/model.jpg'} id="modelBefore" alt={'Model'} />
+                            <img style={this.modelCSS} src={'./glassesImage/model.jpg'} alt={'Model'} />
                         </div>
                     </div>
                     {/* glasses */}
