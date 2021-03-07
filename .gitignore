@@ -7,6 +7,7 @@
 
 # prev EXE
 /src/BaiTap-LMS/b1-BTThucHanhLayout
+/src/BaiTap-LMS/b2-BTGlasses-State-Props
 
 # testing
 /coverage
