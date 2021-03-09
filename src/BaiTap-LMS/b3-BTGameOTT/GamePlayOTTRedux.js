@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './GameOTTRedux.css';
+import './GameOTTRedux.scss';
 
 import { connect } from 'react-redux';
 
@@ -12,8 +12,10 @@ class GamePlayOTTRedux extends Component {
             <div className="gamePlay container">
                 <div className="player">
                     {/* player pick */}
-                    <p className="pick">Bạn chọn: {gameState.playerPick.value}</p>
-                    <img className="option" src={gameState.playerPick.image} alt={gameState.playerPick.image} />
+                    <p className="pick-title">Bạn chọn: {gameState.playerPick.value}</p>
+                    <div className="thinking">
+                        <img className="pick-img" src={gameState.playerPick.image} alt={gameState.playerPick.image} />
+                    </div>
                     <img className="icon" src='./gameOTTImage/player.png' alt='./gameOTTImage/player.png' />
 
                     <div className="selectOTT">
@@ -28,7 +30,7 @@ class GamePlayOTTRedux extends Component {
                 <div className="result">
                     <p>KẾT QUẢ : {gameState.playerResult}</p>
                     <p>Số bàn thắng : {gameState.playerScores}</p>
-                    <p>Tỉ lệ thắng hiện tại : {gameState.winRate}</p>
+                    <p>Tỉ lệ thắng : {gameState.winRate}</p>
                     <p>Số bàn chơi : {gameState.playerOverAll}</p>
                     <button onClick={() => {
                         this.props.playGame(gameState.playerPick.image, gameState.playerPick.value)
@@ -37,8 +39,8 @@ class GamePlayOTTRedux extends Component {
 
                 <div className="player">
                     {/* computer pick */}
-                    <p className="pick">Máy chọn : {gameState.computerPick.value}</p>
-                    <img className="option" src={gameState.computerPick.image} alt={gameState.computerPick.image} />
+                    <p className="pick-title">Máy chọn : {gameState.computerPick.value}</p>
+                    <img className="pick-img" src={gameState.computerPick.image} alt={gameState.computerPick.image} />
                     <img className="icon" src='./gameOTTImage/playerComputer.png' alt='./gameOTTImage/playerComputer.png' />
                 </div>
             </div>

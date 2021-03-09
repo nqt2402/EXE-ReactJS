@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './GameOTTRedux.css';
+import './GameOTTRedux.scss';
 import GamePlayOTTRedux from './GamePlayOTTRedux';
 
 export default class GameOTTRedux extends Component {

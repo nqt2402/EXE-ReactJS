@@ -1,0 +1,80 @@
+.bgGameOTT {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../imgGameOTT/bgGame.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom bottom;
+  h3 {
+    text-align: center;
+    background-image: linear-gradient(to right, yellow 25%, red 75%);
+    color: transparent;
+    background-clip: text;
+    font-size: 35px;
+  }
+}
+
+.gamePlay {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0 1em 0;
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      text-align: center;
+      background-image: linear-gradient(to left, yellow, orange 60%);
+      color: transparent;
+      background-clip: text;
+      font-size: 25px;
+    }
+    .btn {
+      display: block;
+      width: 80%;
+      font-size: 20px;
+    }
+  }
+  .player {
+    position: relative;
+    .icon {
+      width: 10em;
+      height: 10em;
+      position: absolute;
+      top: 40%;
+      left: 0%;
+    }
+    .option {
+      display: block;
+      width: 3.5em;
+      height: 3.5em;
+    }
+    .pick-img {
+      display: block;
+      width: 3.5em;
+      height: 3.5em;
+      position: absolute;
+      top: 10%;
+      left: 30%;
+    }
+    .pick-title {
+      text-align: center;
+      background-image: linear-gradient(to left, yellow, orange 60%);
+      color: transparent;
+      background-clip: text;
+      font-size: 25px;
+    }
+    .selectOTT {
+      display: flex;
+      position: absolute;
+      bottom: -30%;
+      left: -30%;
+    }
+    .btn {
+      display: block;
+    }
+  }
+}
