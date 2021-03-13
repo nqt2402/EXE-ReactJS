@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import './GameOTTRedux.scss';
-
 import { connect } from 'react-redux';
+import './GameOTTRedux.scss';
 
 class GamePlayOTTRedux extends Component {
 
@@ -9,24 +8,7 @@ class GamePlayOTTRedux extends Component {
     render() {
         let { gameState } = this.props;
         return (
-            <div className="gamePlay container">
-                <div className="player">
-                    {/* player pick */}
-                    <p className="pick-title">Bạn chọn: {gameState.playerPick.value}</p>
-                    <div className="thinking">
-                        <img className="pick-img" src={gameState.playerPick.image} alt={gameState.playerPick.image} />
-                    </div>
-                    <img className="icon" src='./gameOTTImage/player.png' alt='./gameOTTImage/player.png' />
-
-                    <div className="selectOTT">
-                        {gameState.OTTArray.map((item, index) => {
-                            return <button key={index} onClick={() => {
-                                this.props.pickValue(item.image, item.value)
-                            }} className="btn"><img className="option" src={item.image} alt={item.image, item.value} /></button>
-                        })}
-                    </div>
-                </div>
-
+            <div className="gamePlay container col-4">
                 <div className="result">
                     <p>KẾT QUẢ : {gameState.playerResult}</p>
                     <p>Số bàn thắng : {gameState.playerScores}</p>
@@ -35,13 +17,6 @@ class GamePlayOTTRedux extends Component {
                     <button onClick={() => {
                         this.props.playGame(gameState.playerPick.image, gameState.playerPick.value)
                     }} className="btn btn-success">Play Game</button>
-                </div>
-
-                <div className="player">
-                    {/* computer pick */}
-                    <p className="pick-title">Máy chọn : {gameState.computerPick.value}</p>
-                    <img className="pick-img" src={gameState.computerPick.image} alt={gameState.computerPick.image} />
-                    <img className="icon" src='./gameOTTImage/playerComputer.png' alt='./gameOTTImage/playerComputer.png' />
                 </div>
             </div>
         )
@@ -58,14 +33,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        pickValue: (img, value) => {
-            const action = {
-                type: 'PLAYER_PICK',
-                imgSource: img,
-                imgValue: value,
-            }
-            dispatch(action);
-        },
 
         playGame: (img, value) => {
             const action = {
@@ -73,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
                 imgSource: img,
                 imgValue: value,
             }
-            dispatch(action);
+            dispatch(action)
         },
 
     }

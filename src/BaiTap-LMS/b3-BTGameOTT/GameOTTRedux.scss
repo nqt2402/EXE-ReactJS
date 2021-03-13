@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background-image: url("../../imgGameOTT/bgGame.png");
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom bottom;
   h3 {
@@ -17,9 +17,69 @@
   }
 }
 
+//CSS component Player,Computer
+.player {
+  position: relative;
+  .pick-title {
+    text-align: center;
+    background-image: linear-gradient(to left, yellow, orange 60%);
+    color: transparent;
+    background-clip: text;
+    font-size: 25px;
+  }
+  .thinking {
+    position: relative;
+    .thinking-pick {
+      position: absolute;
+      width: 100px;
+      height: 60px;
+      top: -0.8em;
+      left: 12em;
+      border-radius: 50%;
+      background-color: grey;
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 20;
+        top: 3.7em;
+        left: 2.7em;
+        width: 0em;
+        height: 0em;
+        border-top: 16px solid grey;
+        border-left: 2px solid transparent;
+        border-right: 15px solid transparent;
+      }
+    }
+    .pick-img {
+      display: block;
+      width: 3em;
+      height: 3em;
+      position: absolute;
+      top: -0.5em;
+      left: 13.7em;
+    }
+  }
+  .icon {
+    width: 10em;
+    height: 10em;
+    position: absolute;
+    top: 6.8em;
+    left: 11.2em;
+  }
+  .selectOTT {
+    display: flex;
+    position: absolute;
+    bottom: -3em;
+    left: 9em;
+    .option {
+      display: block;
+      width: 3.5em;
+      height: 3.5em;
+    }
+  }
+}
+//component gamePlay
 .gamePlay {
-  display: flex;
-  justify-content: space-between;
   padding: 1em 0 1em 0;
   .result {
     display: flex;
@@ -34,47 +94,8 @@
     }
     .btn {
       display: block;
-      width: 80%;
+      max-width: 100%;
       font-size: 20px;
-    }
-  }
-  .player {
-    position: relative;
-    .icon {
-      width: 10em;
-      height: 10em;
-      position: absolute;
-      top: 40%;
-      left: 0%;
-    }
-    .option {
-      display: block;
-      width: 3.5em;
-      height: 3.5em;
-    }
-    .pick-img {
-      display: block;
-      width: 3.5em;
-      height: 3.5em;
-      position: absolute;
-      top: 10%;
-      left: 30%;
-    }
-    .pick-title {
-      text-align: center;
-      background-image: linear-gradient(to left, yellow, orange 60%);
-      color: transparent;
-      background-clip: text;
-      font-size: 25px;
-    }
-    .selectOTT {
-      display: flex;
-      position: absolute;
-      bottom: -30%;
-      left: -30%;
-    }
-    .btn {
-      display: block;
     }
   }
 }
