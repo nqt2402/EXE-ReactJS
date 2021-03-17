@@ -6,16 +6,17 @@ class GamePlayOTTRedux extends Component {
 
     //REACT RENDER
     render() {
-        let { gameState } = this.props;
+
+        let { output } = this.props;
         return (
             <div className="gamePlay container col-4">
                 <div className="result">
-                    <p>KẾT QUẢ : {gameState.playerResult}</p>
-                    <p>Số bàn thắng : {gameState.playerScores}</p>
-                    <p>Tỉ lệ thắng : {gameState.winRate}</p>
-                    <p>Số bàn chơi : {gameState.playerOverAll}</p>
+                    <p>KẾT QUẢ : {output.result.playerResult}</p>
+                    <p>Số bàn thắng : {output.result.playerScores}</p>
+                    <p>Tỉ lệ thắng : {output.result.winRate}</p>
+                    <p>Số bàn chơi : {output.result.playerOverAll}</p>
                     <button onClick={() => {
-                        this.props.playGame(gameState.playerPick.image, gameState.playerPick.value)
+                        this.props.playGame()
                     }} className="btn btn-success">Play Game</button>
                 </div>
             </div>
@@ -24,9 +25,8 @@ class GamePlayOTTRedux extends Component {
 }
 
 const mapStateToProps = (state) => {
-
     return {
-        gameState: state.OTTReducer
+        output: state.OTTReducer,
     }
 }
 
@@ -34,13 +34,23 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
 
-        playGame: (img, value) => {
-            const action = {
-                type: 'PLAY_GAME',
-                imgSource: img,
-                imgValue: value,
-            }
-            dispatch(action)
+        playGame: (playerPickID) => {
+            let count = 0;
+            let randomLoop = setInterval(() => {
+                dispatch({
+                    type: 'RANDOM',
+                })
+                count++;
+                console.log(count);
+                if (count > 10) {
+                    clearInterval(randomLoop);
+
+                    dispatch({
+                        type: 'PLAY_GAME',
+                        playerPickID
+                    })
+                }
+            }, 200);
         },
 
     }

@@ -3,24 +3,34 @@ import { connect } from 'react-redux'
 
 class Player extends Component {
     render() {
-        let { gameState } = this.props;
+        let { OTTArray, newState } = this.props;
         //REACT RENDER
         return (
             <div className="player col-4">
                 {/* player pick */}
-                <p className="pick-title">Bạn chọn: {gameState.playerPick.value}</p>
+                <p className="pick-title">Bạn chọn: {OTTArray.find(item =>
+                    item.bet === true
+                ).id}</p>
                 <div className="thinking">
                     <div className="thinking-pick"></div>
-                    <img className="pick-img" src={gameState.playerPick.image} alt={gameState.playerPick.image} />
+                    <img className="pick-img" src={OTTArray.find(item =>
+                        item.bet === true
+                    ).image} alt={OTTArray.find(item =>
+                        item.bet === true
+                    ).image} />
                 </div>
 
                 <img className="icon" src='./gameOTTImage/player.png' alt='./gameOTTImage/player.png' />
 
                 <div className="selectOTT">
-                    {gameState.OTTArray.map((item, index) => {
-                        return <button key={index} onClick={() => {
-                            this.props.pickValue(item.image, item.value)
-                        }} className="btn"><img className="option" src={item.image} alt={item.image, item.value} /></button>
+                    {OTTArray.map((item, index) => {
+                        let borderCSS = { borderRadius: '50%', background: 'transparent', border: 'none' };
+                        if (item.bet) {
+                            borderCSS = { border: '3px solid #f1da36', borderRadius: '50%', background: 'transparent' };
+                        }
+                        return <button style={borderCSS} key={index} onClick={() => {
+                            this.props.betGame(item.id)
+                        }} className="option"><img src={item.image} alt={item.image, item.value} /></button>
                     })}
                 </div>
             </div>
@@ -29,22 +39,22 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
-
     return {
-        gameState: state.OTTReducer
+        // playerPick: state.OTTReducer.playerPick,
+        // newState: state.OTTReducer,
+        OTTArray: state.OTTReducer.OTTArray,
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        pickValue: (img, value) => {
-            const action = {
-                type: 'PLAYER_PICK',
-                imgSource: img,
-                imgValue: value,
-            }
-            dispatch(action)
+        betGame: (betID) => {
+            dispatch({
+                type: 'BET_GAME',
+                betID
+            });
         },
     }
-}
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Player)
